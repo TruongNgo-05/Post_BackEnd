@@ -18,7 +18,7 @@ public class PostController {
     final private PostService postService;
 
 
-    @GetMapping
+    @GetMapping()
     public List<PostDto> findAll() {
         return postService.findAll();
     }
