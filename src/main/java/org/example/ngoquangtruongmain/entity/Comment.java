@@ -31,6 +31,6 @@ public class Comment {
 
     @Column(name = "updated_at",nullable=false)
     @UpdateTimestamp
-    private LocalDateTime updatedDate;
+    private LocalDateTime updatedAt;
 }
 // duy nhaat :unique =true
