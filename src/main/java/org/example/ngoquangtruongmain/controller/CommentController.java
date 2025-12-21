@@ -2,6 +2,7 @@ package org.example.ngoquangtruongmain.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.ngoquangtruongmain.dto.CommentDto;
+import org.example.ngoquangtruongmain.service.CommentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,11 +13,11 @@ import java.util.List;
 @RequestMapping("/api/v1/comment")
 @RequiredArgsConstructor
 public class CommentController {
-//
-//    final CommentService commentService;
+
+    final CommentService commentService;
 
     @GetMapping
     public List<CommentDto> findAllComment() {
-//        return commentService.findAllComment();
+        return commentService.findAllComment();
     }
 }
