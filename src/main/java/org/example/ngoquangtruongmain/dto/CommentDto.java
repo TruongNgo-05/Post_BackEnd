@@ -1,5 +1,6 @@
 package org.example.ngoquangtruongmain.dto;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@JsonPropertyOrder({"id","name","email","content","createAt","updateAt"})
 public class CommentDto {
 
     private Integer id;
