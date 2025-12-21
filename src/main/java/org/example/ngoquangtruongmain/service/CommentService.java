@@ -13,7 +13,7 @@ public interface CommentService {
 
     CommentDto create(CommentCreateForm form);
 
-    CommentDto update(CommentUpdateFrom form, Integer id);
+    CommentDto update(Integer id,CommentUpdateFrom form);
 
     void delete(Integer id);
 }

@@ -40,7 +40,7 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public CommentDto update(CommentUpdateFrom form, Integer id) {
+    public CommentDto update(Integer id,CommentUpdateFrom form) {
         var optinalComment= commentRepository.findById(id);
         if(optinalComment.isEmpty()) {
             return null;
