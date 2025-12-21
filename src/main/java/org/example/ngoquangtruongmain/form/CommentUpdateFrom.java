@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CommentCreateForm {
+public class CommentUpdateFrom {
     private String name;
     private String email;
     private String content;

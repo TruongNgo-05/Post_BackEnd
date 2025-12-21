@@ -14,7 +14,7 @@ public class PostMapper {
         dto.setDescription(post.getDescription());
         dto.setContent(post.getContent());
         dto.setCreatedAt(post.getCreatedAt());
-        dto.setUpdatedAt(post.getCreatedAt());
+        dto.setUpdatedAt(post.getUpdatedAt());
         return dto;
     }
 
