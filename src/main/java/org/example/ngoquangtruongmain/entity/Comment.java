@@ -1,5 +1,6 @@
 package org.example.ngoquangtruongmain.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Table(name = "comment")
+@JsonPropertyOrder({"id","name","email","content","createAt","updateAt"})
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

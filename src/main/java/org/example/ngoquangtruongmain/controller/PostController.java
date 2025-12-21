@@ -6,6 +6,8 @@ import org.example.ngoquangtruongmain.entity.Post;
 import org.example.ngoquangtruongmain.form.PostCreateForm;
 import org.example.ngoquangtruongmain.form.PostUpdateForm;
 import org.example.ngoquangtruongmain.service.PostService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class PostController {
 
 
     @GetMapping
-    public List<PostDto> findAll() {
-        return postService.findAll();
+    public Page<PostDto> findAll(Pageable pageable) {
+        return postService.findAll(pageable);
     }
 
     @GetMapping("/{id}")

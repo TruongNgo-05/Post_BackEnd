@@ -5,6 +5,8 @@ import org.example.ngoquangtruongmain.dto.CommentDto;
 import org.example.ngoquangtruongmain.form.CommentCreateForm;
 import org.example.ngoquangtruongmain.form.CommentUpdateFrom;
 import org.example.ngoquangtruongmain.service.CommentService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,11 +19,11 @@ public class CommentController {
     final CommentService commentService;
 
     @GetMapping
-    public List<CommentDto> findAllComment() {
-        return commentService.findAllComment();
+    public Page<CommentDto> findAllComment(Pageable pageable) {
+        return commentService.findAllComment(pageable);
     }
 
-    @GetMapping
+    @GetMapping({"/{id}"})
     public CommentDto findCommentById(@PathVariable("id") Integer id) {
         return commentService.findById(id);
     }

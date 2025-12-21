@@ -8,6 +8,8 @@ import org.example.ngoquangtruongmain.mapper.CommentMapper;
 import org.example.ngoquangtruongmain.repositoty.CommentRepository;
 
 import org.example.ngoquangtruongmain.service.CommentService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,11 +20,9 @@ public class CommentServiceImpl implements CommentService{
     final private CommentRepository commentRepository;
 
     @Override
-    public List<CommentDto> findAllComment() {
-        return commentRepository.findAll()
-                .stream()
-                .map(CommentMapper ::map)
-                .toList();
+    public Page<CommentDto> findAllComment(Pageable pageable) {
+        return commentRepository.findAll(pageable)
+                .map(CommentMapper ::map);
     }
 
     @Override
