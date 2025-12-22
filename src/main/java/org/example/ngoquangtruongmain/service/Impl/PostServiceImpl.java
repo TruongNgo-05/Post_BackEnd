@@ -1,28 +1,23 @@
 package org.example.ngoquangtruongmain.service.Impl;
-
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.example.ngoquangtruongmain.dto.PostDto;
 import org.example.ngoquangtruongmain.entity.Post;
 import org.example.ngoquangtruongmain.form.PostCreateForm;
 import org.example.ngoquangtruongmain.form.PostUpdateForm;
-import org.example.ngoquangtruongmain.mapper.CommentMapper;
-import org.example.ngoquangtruongmain.mapper.PostMapper;
 import org.example.ngoquangtruongmain.repositoty.PostRepository;
 import org.example.ngoquangtruongmain.service.PostService;
 import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
 
-import static org.example.ngoquangtruongmain.mapper.PostMapper.map;
 
 
 @Service
 @RequiredArgsConstructor
+@Primary
 public class PostServiceImpl implements PostService {
     final private PostRepository postRepository;
     final private ModelMapper modelMapper;
