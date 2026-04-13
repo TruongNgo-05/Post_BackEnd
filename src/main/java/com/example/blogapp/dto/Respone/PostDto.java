@@ -1,4 +1,4 @@
-package com.example.blogapp.dto;
+package com.example.blogapp.dto.Respone;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;

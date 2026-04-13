@@ -1,8 +1,8 @@
 package com.example.blogapp.sevice;
 
-import com.example.blogapp.dto.CommentDto;
-import com.example.blogapp.form.CommentCreateForm;
-import com.example.blogapp.form.CommentUpdateForm;
+import com.example.blogapp.dto.Respone.CommentDto;
+import com.example.blogapp.dto.request.CommentCreateForm;
+import com.example.blogapp.dto.request.CommentUpdateForm;
 
 import java.util.List;
 

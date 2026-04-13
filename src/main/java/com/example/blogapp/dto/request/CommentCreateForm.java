@@ -1,11 +1,12 @@
-package com.example.blogapp.form;
+package com.example.blogapp.dto.request;
+
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CommentUpdateForm {
+public class CommentCreateForm {
 
     private String name;
 

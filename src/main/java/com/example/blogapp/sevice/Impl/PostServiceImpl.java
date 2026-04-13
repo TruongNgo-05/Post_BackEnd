@@ -1,13 +1,14 @@
 package com.example.blogapp.sevice.Impl;
 
-import com.example.blogapp.dto.PostDto;
+import com.example.blogapp.dto.Respone.PostDto;
 import com.example.blogapp.entity.Post;
 import com.example.blogapp.exception.ApplicationException;
-import com.example.blogapp.form.PostCreateForm;
-import com.example.blogapp.form.PostUpdateForm;
+import com.example.blogapp.dto.request.PostCreateForm;
+import com.example.blogapp.dto.request.PostUpdateForm;
 import com.example.blogapp.mapper.PostMapper;
 import com.example.blogapp.repository.PostRepository;
 import com.example.blogapp.sevice.PostService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +43,7 @@ public class PostServiceImpl implements PostService {
         return postDto;
     }
 
+    @Transactional
     @Override
     public PostDto create(PostCreateForm postCreateForm) {
         Post post = PostMapper.map(postCreateForm);
@@ -49,6 +51,7 @@ public class PostServiceImpl implements PostService {
         return postDto;
     }
 
+    @Transactional
     @Override
     public PostDto update(PostUpdateForm postUpdateForm, Long id) {
         Optional<Post> optional = postRepository.findById(id);
@@ -61,6 +64,7 @@ public class PostServiceImpl implements PostService {
         return postDto;
     }
 
+    @Transactional
     @Override
     public void deleteById(Long id) {
         postRepository.deleteById(id);

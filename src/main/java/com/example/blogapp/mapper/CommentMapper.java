@@ -1,33 +1,35 @@
 package com.example.blogapp.mapper;
 
-import com.example.blogapp.dto.CommentDto;
+import com.example.blogapp.dto.Respone.CommentDto;
 import com.example.blogapp.entity.Comment;
-import com.example.blogapp.form.CommentCreateForm;
-import com.example.blogapp.form.CommentUpdateForm;
+import com.example.blogapp.dto.request.CommentCreateForm;
+import com.example.blogapp.dto.request.CommentUpdateForm;
+import org.springframework.beans.BeanUtils;
+
 
 public class CommentMapper {
  public static CommentDto map(Comment comment) {
      CommentDto commentDto = new CommentDto();
-     commentDto.setId(comment.getId());
-     commentDto.setName(comment.getName());
-     commentDto.setContent(comment.getContent());
-     commentDto.setEmail(comment.getEmail());
-     commentDto.setCreatedAt(comment.getCreatedAt());
-     commentDto.setUpdatedAt(comment.getUpdatedAt());
+     BeanUtils.copyProperties(comment,commentDto);
      return commentDto;
  }
 
  public static Comment map (CommentCreateForm commentCreateForm) {
      Comment comment = new Comment();
-     comment.setName(commentCreateForm.getName());
-     comment.setEmail(commentCreateForm.getEmail());
-     comment.setContent(commentCreateForm.getContent());
+     BeanUtils.copyProperties(commentCreateForm,comment);
     return   comment;
  }
 
  public static void map (CommentUpdateForm commentUpdateForm, Comment comment) {
-    comment.setName(commentUpdateForm.getName());
-    comment.setEmail(commentUpdateForm.getEmail());
-    comment.setContent(commentUpdateForm.getContent());
+     if (commentUpdateForm.getName() != null) {
+         comment.setName(commentUpdateForm.getName());
+     }
+     if (commentUpdateForm.getEmail() != null) {
+         comment.setEmail(commentUpdateForm.getEmail());
+     }
+     if (commentUpdateForm.getContent() != null) {
+         comment.setContent(commentUpdateForm.getContent());
+     }
  }
+
 }
