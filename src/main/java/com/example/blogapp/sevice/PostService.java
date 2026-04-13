@@ -1,8 +1,8 @@
 package com.example.blogapp.sevice;
 
-import com.example.blogapp.dto.PostDto;
-import com.example.blogapp.form.PostCreateForm;
-import com.example.blogapp.form.PostUpdateForm;
+import com.example.blogapp.dto.Respone.PostDto;
+import com.example.blogapp.dto.request.PostCreateForm;
+import com.example.blogapp.dto.request.PostUpdateForm;
 
 import java.util.List;
 
