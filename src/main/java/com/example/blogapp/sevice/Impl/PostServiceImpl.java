@@ -2,6 +2,7 @@ package com.example.blogapp.sevice.Impl;
 
 import com.example.blogapp.dto.PostDto;
 import com.example.blogapp.entity.Post;
+import com.example.blogapp.exception.ApplicationException;
 import com.example.blogapp.form.PostCreateForm;
 import com.example.blogapp.form.PostUpdateForm;
 import com.example.blogapp.mapper.PostMapper;
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Optional;
+
 
 @Service
 @AllArgsConstructor
@@ -22,54 +24,41 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostDto> findAll() {
-//       var posts = postRepository.findAll();
-//
-//       var dtos = new ArrayList<PostDto>();
-//       for(Post post : posts) {
-//           var dto = PostMapper.map(post);
-//           dtos.add(dto);
-//       }
-//       return dtos;
-
-
-//        return postRepository.findAll()
-//                .stream().map(new  Function<Post, PostDto>() {
-//                    @Override
-//                    public PostDto apply(Post post) {
-//                        return PostMapper.map(post);
-//                    }
-//                }).toList();
-
-        return postRepository.findAll()
-                .stream()
-                .map(PostMapper::map)
-                .toList();
+        List<Post> posts = postRepository.findAll();
+        List<PostDto> postDtos = new ArrayList<>();
+        for (Post post : posts) {
+            postDtos.add(PostMapper.map(post));
+        }
+        return postDtos;
     }
 
     @Override
     public PostDto findById(Long id) {
-        return postRepository.findById(id)
-                .map(PostMapper::map)
-                .orElseThrow(null);
+        Optional<Post> optional = postRepository.findById(id);
+        if (optional.isEmpty()) {
+            throw new ApplicationException(" id not found ");
+        }
+        PostDto postDto = PostMapper.map(optional.get());
+        return postDto;
     }
 
     @Override
     public PostDto create(PostCreateForm postCreateForm) {
-        var post =PostMapper.map(postCreateForm);
-        var newPost = postRepository.save(post);
-        return PostMapper.map(newPost);
+        Post post = PostMapper.map(postCreateForm);
+        PostDto postDto = PostMapper.map(postRepository.save(post));
+        return postDto;
     }
 
     @Override
     public PostDto update(PostUpdateForm postUpdateForm, Long id) {
-        var optional = postRepository.findById(id);
+        Optional<Post> optional = postRepository.findById(id);
         if (optional.isEmpty()) {
-            return null;
+            throw new ApplicationException("id k ton tai");
         }
-        var post = optional.get();
+        Post post = optional.get();
         PostMapper.map(postUpdateForm, post);
-        var savedPost = postRepository.save(post);
-return PostMapper.map(savedPost);
+        PostDto postDto = PostMapper.map(postRepository.save(post));
+        return postDto;
     }
 
     @Override

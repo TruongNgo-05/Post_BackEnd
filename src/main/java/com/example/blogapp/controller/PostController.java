@@ -3,7 +3,7 @@ package com.example.blogapp.controller;
 import com.example.blogapp.dto.PostDto;
 import com.example.blogapp.form.PostCreateForm;
 import com.example.blogapp.form.PostUpdateForm;
-import com.example.blogapp.repository.PostRepository;
+
 import com.example.blogapp.sevice.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
