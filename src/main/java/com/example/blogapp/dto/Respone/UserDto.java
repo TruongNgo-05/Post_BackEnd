@@ -23,7 +23,7 @@ public class UserDto {
 
     private Role role;
 
-    LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 
-    LocalDateTime updatedAt;
+    private LocalDateTime updatedAt;
 }

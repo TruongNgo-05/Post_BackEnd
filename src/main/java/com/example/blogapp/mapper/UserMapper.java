@@ -1,5 +1,6 @@
 package com.example.blogapp.mapper;
 
+import com.example.blogapp.constant.Role;
 import com.example.blogapp.dto.Respone.UserDto;
 import com.example.blogapp.dto.request.UserCreateForm;
 import com.example.blogapp.dto.request.UserUpdateForm;
@@ -27,8 +28,9 @@ public static User map(UserCreateForm userCreateForm) {
 //    user.setUserName(userCreateForm.getUserName());
 //    user.setEmail(userCreateForm.getEmail());
 //    user.setPassWord(userCreateForm.getPassWord());
-//    user.setRole(userCreateForm.getRole());
+//    user.setRole(Role.CUSTOMER);
     BeanUtils.copyProperties(userCreateForm, user);
+    user.setRole(Role.CUSTOMER);
     return user;
 }
 
@@ -41,9 +43,6 @@ public static void map(UserUpdateForm userUpdateForm, User user) {
     }
     if (userUpdateForm.getPassWord() != null) {
         user.setPassWord(userUpdateForm.getPassWord());
-    }
-    if (userUpdateForm.getRole() != null) {
-        user.setRole(userUpdateForm.getRole());
     }
 }
 }

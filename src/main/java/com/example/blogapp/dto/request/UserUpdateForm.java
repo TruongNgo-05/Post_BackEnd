@@ -14,5 +14,4 @@ public class UserUpdateForm {
 
     private String passWord;
 
-    private Role role;
 }

@@ -62,7 +62,7 @@ public class CommentServiceImpl implements CommentService {
     public CommentDto update(Long id, CommentUpdateForm commentUpdateForm){
         Optional<Comment> optional = commentRepository.findById(id);
         if (optional.isEmpty()) {
-            throw new RuntimeException("k tim thay id");
+            throw new ApplicationException("k tim thay id");
         }
         Comment comment = optional.get();
         CommentMapper.map(commentUpdateForm,comment);

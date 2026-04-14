@@ -22,9 +22,9 @@ public class PostMapper {
 // ánh xạ từ font cập nhật vào dữ liệu trong database
 public static void map(PostUpdateForm form, Post post) {
 
-    if (form.getTitle() != null) {
+//    if (form.getTitle() != null) {
         post.setTitle(form.getTitle());
-    }
+//    }
 
     if (form.getDescription() != null) {
         post.setDescription(form.getDescription());
